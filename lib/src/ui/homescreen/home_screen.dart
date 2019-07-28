@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 5,
                 child: StreamBuilder(
                     stream: bloc.photosList,
                     builder: (context, AsyncSnapshot<Photos> snapshot) {

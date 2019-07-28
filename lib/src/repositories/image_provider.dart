@@ -10,7 +10,7 @@ class ImageProvider {
 
   Client _client = Client();
   static const String _apiKey =
-      "9a29064406c240651366e1c0ae1ebfe64fcda1c1d336de00af5a06226596bbbb";
+      "api-key";
   static const String _baseUrl = "https://api.unsplash.com";
 
   Future<State> getImagesByName(String query) async {
