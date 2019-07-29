@@ -4,15 +4,16 @@ import '../models/state.dart';
 import 'dart:convert';
 
 class ImageProvider {
+  //Singleton
   static final ImageProvider _imageProvider = ImageProvider._private();
   ImageProvider._private();
   factory ImageProvider() => _imageProvider;
 
   Client _client = Client();
-  static const String _apiKey =
-      "api-key";
+  static const String _apiKey = "api-key";
   static const String _baseUrl = "https://api.unsplash.com";
 
+  //Get list of images based on the query
   Future<State> getImagesByName(String query) async {
     Response response;
     if (_apiKey == 'api-key') {
