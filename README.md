@@ -4,7 +4,7 @@ A new Flutter application showcasing list of stock images from Unsplash API.
 
 ## Getting Started
 
-Clone the project and import in Android Studio or Visual Code to run.
+Clone the project and import in Android Studio or Visual Code to run. Make sure you get your API key from [here](https://unsplash.com/developers) and add it to the project.
 
 Libraries used:
 - [RxDart](https://pub.dev/packages/rxdart)
