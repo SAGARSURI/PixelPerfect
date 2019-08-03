@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:typed_data';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'bloc_base.dart';
 import '../repositories/repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -40,6 +42,12 @@ class HomeScreenBloc extends BlocBase {
     return (result.description == null || result.description.isEmpty)
         ? result.altDescription
         : result.description;
+  }
+
+  void shareImage(String url) {
+    _repository.getImageToShare(url).then((Uint8List value) async {
+      await Share.file("Share via:","image.png",value,"image/png");
+    });
   }
 }
 

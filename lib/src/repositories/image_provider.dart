@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:http/http.dart';
 import '../models/photos.dart';
 import '../models/state.dart';
@@ -25,5 +26,11 @@ class ImageProvider {
       return State<Photos>.success(Photos.fromJson(json.decode(response.body)));
     else
       return State<String>.error(response.statusCode.toString());
+  }
+
+  Future<Uint8List> getImageFromUrl(String url) async {
+    var response = await _client.get(url);
+    Uint8List bytes = response.bodyBytes;
+    return bytes;
   }
 }

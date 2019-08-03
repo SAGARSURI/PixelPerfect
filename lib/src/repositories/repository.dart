@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'image_provider.dart';
 import '../models/state.dart';
 
@@ -6,7 +8,11 @@ class Repository {
   Repository._private();
   factory Repository() => _repository;
 
-  ImageProvider imageProvider = ImageProvider();
+  ImageProvider _imageProvider = ImageProvider();
 
-  Future<State> imageData(query) => imageProvider.getImagesByName(query);
+  Future<State> imageData(query) => _imageProvider.getImagesByName(query);
+
+  Future<Uint8List> getImageToShare(String url) {
+    return _imageProvider.getImageFromUrl(url);
+  }
 }

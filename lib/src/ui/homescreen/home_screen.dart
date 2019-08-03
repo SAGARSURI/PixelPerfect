@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 import '../../blocs/home_screen_bloc.dart';
 import '../../models/photos.dart';
@@ -112,7 +115,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 SizedBox(width: 10.0),
-                Text(result.user.name)
+                Text(result.user.name),
+                Spacer(),
+                GestureDetector(
+                  onTap: (){
+                    bloc.shareImage(result.urls.regular);
+                  },
+                  child: Icon(Icons.share, color: Colors.white),
+                )
               ],
             ),
           )
