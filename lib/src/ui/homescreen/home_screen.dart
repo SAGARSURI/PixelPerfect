@@ -1,6 +1,3 @@
-import 'dart:typed_data';
-
-import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 import '../../blocs/home_screen_bloc.dart';
 import '../../models/photos.dart';

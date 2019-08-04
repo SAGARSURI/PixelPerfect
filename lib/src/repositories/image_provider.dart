@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:http/http.dart';
 import '../models/photos.dart';
-import '../models/state.dart';
+import '../repositories/state.dart';
 import 'dart:convert';
 
 class ImageProvider {

@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'image_provider.dart';
-import '../models/state.dart';
+import 'state.dart';
 
 class Repository {
   static final Repository _repository = Repository._private();

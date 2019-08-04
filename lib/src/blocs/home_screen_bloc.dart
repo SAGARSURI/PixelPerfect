@@ -5,7 +5,7 @@ import 'bloc_base.dart';
 import '../repositories/repository.dart';
 import 'package:rxdart/rxdart.dart';
 import '../models/photos.dart';
-import '../models/state.dart';
+import '../repositories/state.dart';
 
 class HomeScreenBloc extends BlocBase {
   static Repository _repository = Repository();
