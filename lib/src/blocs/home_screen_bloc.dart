@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:share/share.dart';
 import 'bloc_base.dart';
 import '../repositories/repository.dart';
 import 'package:rxdart/rxdart.dart';
@@ -9,13 +9,13 @@ import '../repositories/state.dart';
 
 class HomeScreenBloc extends BlocBase {
   static Repository _repository = Repository();
-  PublishSubject<String> _query;
+  late final PublishSubject<String> _query;
 
   init() {
     _query = PublishSubject<String>();
   }
 
-  Observable<Photos> get photosList => _query.stream
+  Stream<Photos> get photosList => _query.stream
       .debounceTime(Duration(milliseconds: 300))
       .where((String value) => value.isNotEmpty)
       .distinct()
@@ -38,15 +38,15 @@ class HomeScreenBloc extends BlocBase {
     _query.close();
   }
 
-  String getDescription(Result result) {
-    return (result.description == null || result.description.isEmpty)
+  String? getDescription(Result result) {
+    return (result.description == null || result.description!.isEmpty)
         ? result.altDescription
         : result.description;
   }
 
   void shareImage(String url) {
     _repository.getImageToShare(url).then((Uint8List value) async {
-      await Share.file("Share via:","image.png",value,"image/png");
+      await Share.share(url);
     });
   }
 }

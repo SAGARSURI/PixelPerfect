@@ -52,9 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context, AsyncSnapshot<Photos> snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
-                            itemCount: snapshot.data.results.length,
+                            itemCount: snapshot.data!.results!.length,
                             itemBuilder: (context, index) {
-                              return listItem(snapshot.data.results[index]);
+                              return listItem(snapshot.data!.results![index]);
                             });
                       } else {
                         return Center(
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Flexible(
                                   child: Text(
                                 'Type a word',
-                                style: Theme.of(context).textTheme.display1,
+                                style: Theme.of(context).textTheme.headline4,
                               ))
                             ],
                           ),
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: <Widget>[
           Container(
-            child: Image.network(result.urls.regular),
+            child: Image.network(result.urls!.regular!),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -108,15 +108,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 30,
                       height: 30,
                       placeholder: 'assets/user.png',
-                      image: result.user.profileImage.medium),
+                      image: result.user!.profileImage!.medium!),
                   borderRadius: BorderRadius.circular(25.0),
                 ),
                 SizedBox(width: 10.0),
-                Text(result.user.name),
+                Text(result.user!.name!),
                 Spacer(),
                 GestureDetector(
                   onTap: (){
-                    bloc.shareImage(result.urls.regular);
+                    bloc.shareImage(result.urls!.regular!);
                   },
                   child: Icon(Icons.share, color: Colors.white),
                 )

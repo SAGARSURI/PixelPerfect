@@ -5,9 +5,9 @@
 import 'dart:convert';
 
 class Photos {
-  int total;
-  int totalPages;
-  List<Result> results;
+  int? total;
+  int? totalPages;
+  List<Result>? results;
 
   Photos({
     this.total,
@@ -19,40 +19,40 @@ class Photos {
 
   String toRawJson() => json.encode(toJson());
 
-  factory Photos.fromJson(Map<String, dynamic> json) => new Photos(
+  factory Photos.fromJson(Map<String, dynamic> json) => Photos(
         total: json["total"],
         totalPages: json["total_pages"],
-        results: new List<Result>.from(
+        results: List<Result>.from(
             json["results"].map((x) => Result.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "total": total,
         "total_pages": totalPages,
-        "results": new List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": List<dynamic>.from(results!.map((x) => x.toJson())),
       };
 }
 
 class Result {
-  String id;
-  DateTime createdAt;
-  DateTime updatedAt;
-  int width;
-  int height;
-  String color;
-  String description;
-  String altDescription;
-  Urls urls;
-  ResultLinks links;
-  List<dynamic> categories;
-  bool sponsored;
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  int? width;
+  int? height;
+  String? color;
+  String? description;
+  String? altDescription;
+  Urls? urls;
+  ResultLinks? links;
+  List<dynamic>? categories;
+  bool? sponsored;
   dynamic sponsoredBy;
   dynamic sponsoredImpressionsId;
-  int likes;
-  bool likedByUser;
-  List<dynamic> currentUserCollections;
-  User user;
-  List<Tag> tags;
+  int? likes;
+  bool? likedByUser;
+  List<dynamic>? currentUserCollections;
+  User? user;
+  List<Tag>? tags;
 
   Result({
     this.id,
@@ -105,33 +105,33 @@ class Result {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt!.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
         "width": width,
         "height": height,
         "color": color,
         "description": description == null ? null : description,
         "alt_description": altDescription,
-        "urls": urls.toJson(),
-        "links": links.toJson(),
-        "categories": new List<dynamic>.from(categories.map((x) => x)),
+        "urls": urls!.toJson(),
+        "links": links!.toJson(),
+        "categories": new List<dynamic>.from(categories!.map((x) => x)),
         "sponsored": sponsored,
         "sponsored_by": sponsoredBy,
         "sponsored_impressions_id": sponsoredImpressionsId,
         "likes": likes,
         "liked_by_user": likedByUser,
         "current_user_collections":
-            new List<dynamic>.from(currentUserCollections.map((x) => x)),
-        "user": user.toJson(),
-        "tags": new List<dynamic>.from(tags.map((x) => x.toJson())),
+            new List<dynamic>.from(currentUserCollections!.map((x) => x)),
+        "user": user!.toJson(),
+        "tags": new List<dynamic>.from(tags!.map((x) => x.toJson())),
       };
 }
 
 class ResultLinks {
-  String self;
-  String html;
-  String download;
-  String downloadLocation;
+  String? self;
+  String? html;
+  String? download;
+  String? downloadLocation;
 
   ResultLinks({
     this.self,
@@ -161,7 +161,7 @@ class ResultLinks {
 }
 
 class Tag {
-  String title;
+  String? title;
 
   Tag({
     this.title,
@@ -181,11 +181,11 @@ class Tag {
 }
 
 class Urls {
-  String raw;
-  String full;
-  String regular;
-  String small;
-  String thumb;
+  String? raw;
+  String? full;
+  String? regular;
+  String? small;
+  String? thumb;
 
   Urls({
     this.raw,
@@ -217,23 +217,23 @@ class Urls {
 }
 
 class User {
-  String id;
-  DateTime updatedAt;
-  String username;
-  String name;
-  String firstName;
-  String lastName;
-  String twitterUsername;
-  String portfolioUrl;
-  String bio;
-  String location;
-  UserLinks links;
-  ProfileImage profileImage;
-  String instagramUsername;
-  int totalCollections;
-  int totalLikes;
-  int totalPhotos;
-  bool acceptedTos;
+  String? id;
+  DateTime? updatedAt;
+  String? username;
+  String? name;
+  String? firstName;
+  String? lastName;
+  String? twitterUsername;
+  String? portfolioUrl;
+  String? bio;
+  String? location;
+  UserLinks? links;
+  ProfileImage? profileImage;
+  String? instagramUsername;
+  int? totalCollections;
+  int? totalLikes;
+  int? totalPhotos;
+  bool? acceptedTos;
 
   User({
     this.id,
@@ -285,7 +285,7 @@ class User {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "updated_at": updatedAt.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
         "username": username,
         "name": name,
         "first_name": firstName,
@@ -294,8 +294,8 @@ class User {
         "portfolio_url": portfolioUrl == null ? null : portfolioUrl,
         "bio": bio,
         "location": location == null ? null : location,
-        "links": links.toJson(),
-        "profile_image": profileImage.toJson(),
+        "links": links!.toJson(),
+        "profile_image": profileImage!.toJson(),
         "instagram_username":
             instagramUsername == null ? null : instagramUsername,
         "total_collections": totalCollections,
@@ -306,13 +306,13 @@ class User {
 }
 
 class UserLinks {
-  String self;
-  String html;
-  String photos;
-  String likes;
-  String portfolio;
-  String following;
-  String followers;
+  String? self;
+  String? html;
+  String? photos;
+  String? likes;
+  String? portfolio;
+  String? following;
+  String? followers;
 
   UserLinks({
     this.self,
@@ -351,9 +351,9 @@ class UserLinks {
 }
 
 class ProfileImage {
-  String small;
-  String medium;
-  String large;
+  String? small;
+  String? medium;
+  String? large;
 
   ProfileImage({
     this.small,
