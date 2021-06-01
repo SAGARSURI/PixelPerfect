@@ -1,0 +1,5 @@
+name: pixel_perfect
+packages:
+  - '*'
+scripts:
+  test: melos exec --dir-exists="test" -- flutter test
